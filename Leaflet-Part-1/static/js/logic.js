@@ -4,7 +4,7 @@ let queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_we
 d3.json(queryUrl).then(function(data) {
     console.log(data)
 
-    createFeatures(data.features);
+    //createFeatures(data.features);
 
     let quakeMarkers = [];
 
@@ -29,7 +29,7 @@ d3.json(queryUrl).then(function(data) {
                 // REFERENCED https://leafletjs.com/examples/choropleth/
                 fillColor: getColor(location.coordinates[2]),
                 radius: (Math.sqrt(data.features[i].properties.mag)*5)
-            })
+            }).bindPopup("<strong>Location: " + data.features[i].properties.place + "</strong><br />Magnitude: " + data.features[i].properties.mag + "<br />Depth: " + location.coordinates[2])
         );
         /*if (location) {
             L.circleMarker([location.coordinates[1], location.coordinates[0]], {
@@ -74,9 +74,9 @@ d3.json(queryUrl).then(function(data) {
 
 
 
-function createFeatures(earthquakeData) {
+/*function createFeatures(earthquakeData) {
     function onEachFeature(feature, layer) {
-        layer.bindPopup(feature.properties.place)
+        layer.bindPopup("<strong>Location: " + feature.properties.place + "</strong><br />Magnitude: " + feature.properties.mag + "<br />Depth: " + feature.geometry.coordinates[2]);
     }
 
     let earthquakes = L.geoJSON(earthquakeData, {
@@ -84,5 +84,5 @@ function createFeatures(earthquakeData) {
     });
 
    // makeMap(earthquakes);
-}
+}*/
 
