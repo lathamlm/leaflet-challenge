@@ -35,7 +35,7 @@ d3.json(queryUrl).then(function(data) {
                 radius: data.features[i].properties.mag*4
             // CREATE POPUP INFORMATION FOR MARKERS
             }).bindPopup("<strong>Location: " + data.features[i].properties.place + "</strong><br />Coordinates: (" + (location.coordinates[1]).toFixed(2)
-                         + ", " + (location.coordinates[0]).toFixed(2) + ")<br />Magnitude: " + (data.features[i].properties.mag).toFixed(2) + "<br />Depth: "
+                         + ", " + (location.coordinates[0]).toFixed(2) + ")<br />Magnitude: " + (data.features[i].properties.mag) + "<br />Depth: "
                          + location.coordinates[2])
                          // ^REFERENCED https://www.w3schools.com/jsref/jsref_tofixed.asp FOR LIMITING DECIMAL PLACES
         );
